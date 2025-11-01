@@ -1,0 +1,23 @@
+#ifndef CONTACT_H
+#define CONTACT_H
+
+#include <QListWidget>
+#include "../head/cryptography.h"
+
+class Contact
+{
+public:
+    Contact(QString _name, std::string _id, CryptoPP::Integer _privDH, CryptoPP::DH _dh);
+    Contact(const Contact& ct);
+    Contact operator=(const Contact& ct);
+    void addSent(QListWidgetItem* _data);
+    void addRecv(QListWidgetItem* _data);
+
+    QListWidget *conv;
+    QString name;
+    CryptoPP::Integer shared;
+    const byte* aes_shared;
+    std::string id;
+};
+
+#endif // CONTACT_H
